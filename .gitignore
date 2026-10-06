@@ -1,6 +1,10 @@
 # dependencies (bun install)
 node_modules
 
+# compiled binary & runtime config
+weather
+weather-config.json
+
 # output
 out
 dist
