@@ -11,7 +11,6 @@ export async function withSpinner<T>(message: string, task: Promise<T>): Promise
     return await task;
   } finally {
     clearInterval(timer);
-    // Limpia la línea del spinner antes de imprimir el resultado
     process.stdout.write("\r\x1b[K");
   }
 }

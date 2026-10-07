@@ -1,24 +1,4 @@
-export interface City {
-  name: string;
-  country: string;
-  latitude: number;
-  longitude: number;
-}
-
-export type TemperatureUnit = "celsius" | "fahrenheit";
-
-export interface Config {
-  defaultCity: City | null;
-  cities: City[];
-  unit: TemperatureUnit;
-}
-
-export interface DayForecast {
-  date: string;
-  max: number;
-  min: number;
-  weatherCode: number;
-}
+import type { TemperatureUnit } from "../types/Weather.ts";
 
 export function unitSymbol(unit: TemperatureUnit): string {
   return unit === "celsius" ? "°C" : "°F";

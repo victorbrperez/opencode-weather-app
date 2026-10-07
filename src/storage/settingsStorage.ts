@@ -1,9 +1,8 @@
 import { basename, dirname, join } from "node:path";
-import type { Config } from "./types.ts";
+import type { Config } from "../types/Weather.ts";
 
-// En binario compilado execPath es el propio ejecutable; en dev es el binario de bun
 const isCompiled = !["bun", "bun.exe"].includes(basename(process.execPath).toLowerCase());
-const baseDir = isCompiled ? dirname(process.execPath) : join(import.meta.dir, "..");
+const baseDir = isCompiled ? dirname(process.execPath) : join(import.meta.dir, "../..");
 const CONFIG_PATH = join(baseDir, "weather-config.json");
 
 const EMPTY_CONFIG: Config = {
@@ -19,7 +18,6 @@ export async function loadConfig(): Promise<Config> {
   try {
     return (await file.json()) as Config;
   } catch {
-    // Config corrupto: se reinicia en lugar de crashear
     return structuredClone(EMPTY_CONFIG);
   }
 }
